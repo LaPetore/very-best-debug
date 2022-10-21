@@ -1,0 +1,62 @@
+<h1><%= @the_user.username %></h1>
+
+<dl>
+  <dt>ID</dt>
+  <dd><%= @the_user.id %></dd>
+
+  <dt>Edit user</dt>
+  <dd>
+    <form action="/update_username/<%= @the_user.username %>">
+      <label for="input_username">Username</label>
+      <input id="input_username" type="text" name="query_username2" placeholder="Enter a username..." value="<%= @the_user.username %>">
+
+      <button>Update user</button>
+    </form>
+  </dd>
+</dl>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Address
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Neighborhood
+    </th>
+
+    <th></th>
+  </tr>
+
+  <% @the_user.commented_venues.each do |a_venue| %>
+  <tr>
+    <td>
+      <%= a_venue.id %>
+    </td>
+    <td>
+      <%= a_venue.address %>
+    </td>
+   
+    <td>
+      <%= a_venue.name %>
+    </td>
+   
+    <td>
+      <%= a_venue.neighborhood %>
+    </td>
+
+    <td>
+      <a href="/venues/<%= a_venue.id %>">Show details</a>
+    </td>
+  </tr>
+  
+  <% end %>
+</table>
